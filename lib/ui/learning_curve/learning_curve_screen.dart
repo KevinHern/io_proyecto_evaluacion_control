@@ -1,5 +1,7 @@
+// Basic Imports
 import 'package:flutter/material.dart';
 import 'package:flutter_web_app/ui/components/text_card.dart';
+import 'package:flutter_web_app/ui/learning_curve/widgets/learning_curve_graph.dart';
 import 'package:flutter_web_app/ui/learning_curve/widgets/switch_form.dart';
 
 class LearningCurveScreen extends StatelessWidget {
@@ -46,7 +48,7 @@ class LearningCurveScreen extends StatelessWidget {
                   style: Theme.of(context).textTheme.bodyText2,
                 ),
                 TextSpan(
-                  text: "- N Iteración: ",
+                  text: "- N-Iteración: ",
                   style: TextStyle(
                     fontFamily:
                         Theme.of(context).textTheme.bodyText2!.fontFamily,
@@ -85,6 +87,10 @@ class LearningCurveScreen extends StatelessWidget {
               height: spacing * 1.5,
             ),
             child,
+            const SizedBox(
+              height: spacing * 2.5,
+            ),
+            const LearningCurveGraph(),
           ],
         ),
       ),
