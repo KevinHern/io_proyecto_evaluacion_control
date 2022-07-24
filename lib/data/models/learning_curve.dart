@@ -98,10 +98,22 @@ class LearningCurveData extends Equatable {
 
       return OperationResult(success: true, returnedObject: learningCurveData);
     } catch (error) {
+      // Building JSON Message
+      String message = "{";
+
+      for (MapEntry<dynamic, dynamic> entry in map.entries) {
+        message +=
+            "${entry.key}: ${entry.value} (${entry.value.runtimeType}), ";
+      }
+
+      message = message.trimRight();
+      message = message.substring(0, message.length - 1);
+      message += "}";
+
       return OperationResult(
         success: false,
         message:
-            "Un error ocurrió durante la deserialización del JSON. Un JSON Object llegó de la siguiente forma:\n${map.toString()}",
+            "Un error ocurrió durante la deserialización del JSON. Un JSON Object llegó de la siguiente forma:\n$message",
       );
     }
   }
