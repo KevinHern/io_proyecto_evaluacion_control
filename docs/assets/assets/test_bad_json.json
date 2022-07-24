@@ -1,0 +1,19 @@
+{
+  "series": [
+    {
+      "y1Time": 0,
+      "y2AccumulatedTime": 0,
+      "xSequence": 0
+    },
+    {
+      "y1Time": 1,
+      "y2AccumulatedTime": "1",
+      "xSequence": 1
+    },
+    {
+      "y1Time": 2,
+      "y2AccumulatedTime": 3,
+      "xSequence": 2
+    }
+  ]
+}
