@@ -32,6 +32,19 @@ void main() {
   group(
     "LearningCurve Series Tests",
     () {
+      // test(
+      //   'lol',
+      //   () {
+      //     var accumulated = 0;
+      //     for (int i = 0; i < 50; i++) {
+      //       accumulated += i;
+      //       String jsonObject =
+      //           '{"xSequence": $i, "y1Time": $i, "y2AccumulatedTime": $accumulated},\n';
+      //       print(jsonObject);
+      //     }
+      //   },
+      // );
+
       test(
         "'createSeries' should return a List<LearningCurveData> object if received a well encoded JSON with the matching format",
         () async {
