@@ -64,6 +64,7 @@ dev_dependencies:
   flutter_lints: ^2.0.0
   mockito: ^5.2.0
   build_runner: ^2.2.0
+  syncfusion_flutter_charts: ^20.2.39
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -81,6 +82,7 @@ flutter:
     - assets/u_galileo.jpg
     - assets/test_good_json.json
     - assets/test_bad_json.json
+    - assets/test_json.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
