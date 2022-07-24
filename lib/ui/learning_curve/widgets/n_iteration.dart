@@ -62,6 +62,13 @@ class LCNIterationState extends State<LCNIteration> with FormMixin {
                 icon: Icons.link,
                 label: "Server URL",
                 controller: serverController,
+                validator: (String? value) {
+                  return (value == null)
+                      ? null
+                      : (value.trim().isEmpty)
+                          ? FormMessages.MANDATORY_FIELD
+                          : null;
+                },
               ),
               const SizedBox(
                 height: spacing,
@@ -107,7 +114,30 @@ class LCNIterationState extends State<LCNIteration> with FormMixin {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   ElevatedButton.icon(
-                    icon: const Icon(Icons.calculate),
+                    icon: const Icon(Icons.info),
+                    label: const Text("Ejemplo"),
+                    onPressed: () {
+                      execute(
+                        context: context,
+                        useCasesFunction: Future<OperationResult>(
+                          () => widget._learningCurveUseCases.getLearningCurve(
+                            url: 'some url',
+                            type: SubScreenType.LC_INITIAL_CONDITIONS,
+                            maxSequenceNumber: 50,
+                            learningRate: 0,
+                            firstSequenceTime: 0,
+                            example: true,
+                          ),
+                        ),
+                        updateUI: (List<LearningCurveData> value) =>
+                            Provider.of<LearningCurveSeriesUI>(context,
+                                    listen: false)
+                                .series = value,
+                      );
+                    },
+                  ),
+                  ElevatedButton.icon(
+                    icon: const Icon(Icons.refresh),
                     label: const Text("Reset"),
                     onPressed: () {
                       serverController.text = "";
