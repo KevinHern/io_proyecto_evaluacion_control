@@ -1,4 +1,5 @@
 // Models
+import 'package:flutter/services.dart';
 import 'package:flutter_web_app/data/datasources/python_server.dart';
 import 'package:flutter_web_app/data/models/learning_curve.dart';
 import 'package:flutter_web_app/data/models/operation_result.dart';
@@ -30,6 +31,7 @@ class LearningCurveUseCases {
     double? aSequenceTime,
     double? bSequenceTime,
     double? firstSequenceTime,
+    bool example = false,
   }) async {
     // Creating Model
     late final LearningCurve learningCurve;
@@ -64,13 +66,21 @@ class LearningCurveUseCases {
             "Error in Learning Curve Use Cases: Unknown subscreen type detected");
     }
 
-    // Sending Request
-    final OperationResult backendResult =
-        await _datasource.getLearningCurveValues(
-      url: url,
-      encodedLearningCurve:
-          _learningCurveManagementContract.toJson(learningCurve: learningCurve),
-    );
+    late final OperationResult backendResult;
+
+    if (!example) {
+      // Sending Request
+      backendResult = await _datasource.getLearningCurveValues(
+        url: url,
+        encodedLearningCurve: _learningCurveManagementContract.toJson(
+            learningCurve: learningCurve),
+      );
+    } else {
+      final String encodedJson =
+          await rootBundle.loadString("assets/test_json.json");
+      backendResult =
+          OperationResult(success: true, returnedObject: encodedJson);
+    }
 
     // Checking result
     if (backendResult.success) {
