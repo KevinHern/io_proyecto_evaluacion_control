@@ -20,7 +20,7 @@ Aquí es cuando se conoce el learning rate y el tiempo invertido en realizar la 
 ```yaml
 {
    "type": 0,             # int
-   "learningRate": .85,   # double
+   "learningRate": 0.85,   # double
    "time": 500.25,        # double
    "maxSequence": 50,     # int
 }
