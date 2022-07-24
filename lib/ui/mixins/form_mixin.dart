@@ -1,6 +1,7 @@
 // Basic Imports
 import 'package:flutter/material.dart';
 import 'package:sn_progress_dialog/progress_dialog.dart';
+import '../../data/models/learning_curve.dart';
 import '../components/dialogs.dart';
 
 // Models
@@ -11,7 +12,7 @@ class FormMixin {
   void execute(
       {required BuildContext context,
       required Future<OperationResult> useCasesFunction,
-      required Function updateUI}) async {
+      required Function(List<LearningCurveData>) updateUI}) async {
     // Showing Loader
     final ProgressDialog pd = ProgressDialog(context: context);
     pd.show(max: 1, msg: "Enviando datos...");
@@ -30,7 +31,7 @@ class FormMixin {
 
     // Update UI
     if (result.success) {
-      updateUI();
+      updateUI(result.returnedObject as List<LearningCurveData>);
     }
   }
 }
