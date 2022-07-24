@@ -64,7 +64,7 @@ Aquí es cuando se conoce (o se tiene idea) del número de iteración y el tiemp
 
 # Formato de Recepción
 
-La aplicación un JSON como respuesta y el formato esperado es de la siguiente manera:
+La aplicación recibe un JSON como respuesta y el formato esperado es de la siguiente manera:
 
 ```yaml
 {
