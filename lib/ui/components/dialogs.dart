@@ -14,9 +14,9 @@ class FormDialogs {
       dialogType: DialogType.INFO,
       animType: AnimType.BOTTOMSLIDE,
       title: title,
-      titleTextStyle: Theme.of(context).textTheme.headline1,
+      titleTextStyle: Theme.of(context).textTheme.subtitle2,
       desc: message,
-      descTextStyle: Theme.of(context).textTheme.bodyText1,
+      descTextStyle: Theme.of(context).textTheme.bodyText2,
       btnCancelOnPress: null,
       btnOkOnPress: () {},
     ).show();
