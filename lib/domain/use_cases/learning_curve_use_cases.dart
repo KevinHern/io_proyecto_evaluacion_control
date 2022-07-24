@@ -10,9 +10,13 @@ import 'package:flutter_web_app/data/repositories/learning_curve_management_impl
 import 'package:flutter_web_app/domain/repositories/learning_curve_management_contract.dart';
 
 class LearningCurveUseCases {
+  final PythonServerDatasource _datasource;
   final LearningCurveManagementContract _learningCurveManagementContract;
-  LearningCurveUseCases({required LearningCurveManagementContract repository})
-      : _learningCurveManagementContract = repository;
+  LearningCurveUseCases({
+    required LearningCurveManagementContract repository,
+    required PythonServerDatasource datasource,
+  })  : _learningCurveManagementContract = repository,
+        _datasource = datasource;
 
   Future<OperationResult> getLearningCurve({
     required String url,
@@ -62,7 +66,7 @@ class LearningCurveUseCases {
 
     // Sending Request
     final OperationResult backendResult =
-        await PythonServerDatasource.getLearningCurveValues(
+        await _datasource.getLearningCurveValues(
       url: url,
       encodedLearningCurve:
           _learningCurveManagementContract.toJson(learningCurve: learningCurve),

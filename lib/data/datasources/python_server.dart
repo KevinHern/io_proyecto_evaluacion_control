@@ -1,9 +1,8 @@
 import 'package:flutter_web_app/data/models/operation_result.dart';
+import 'package:http/http.dart' as http;
 
 class PythonServerDatasource {
-  static get http => null;
-
-  static Future<OperationResult> getLearningCurveValues(
+  Future<OperationResult> getLearningCurveValues(
       {required String url, required String encodedLearningCurve}) async {
     try {
       final response = await http.post(

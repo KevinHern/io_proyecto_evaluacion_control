@@ -139,7 +139,7 @@ void main() {
               };
 
               final String expectedMessage =
-                  "Un error ocurrió durante la deserialización del JSON. El JSON Object llegó de la siguiente forma:\n${dummyMap.toString()}";
+                  "Un error ocurrió durante la deserialización del JSON. Un JSON Object llegó de la siguiente forma:\n${dummyMap.toString()}";
 
               // Test
               final result = LearningCurveData.mapToModel(map: dummyMap);

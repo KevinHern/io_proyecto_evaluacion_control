@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../components/form_inputs.dart';
 
+// Datasources
+import 'package:flutter_web_app/data/datasources/python_server.dart';
+
 // Mixins
 import 'package:flutter_web_app/ui/mixins/form_mixin.dart';
 
@@ -22,7 +25,10 @@ class LCInitialConditions extends StatefulWidget {
   final LearningCurveUseCases _learningCurveUseCases;
   LCInitialConditions(
       {required LearningCurveManagementContract repository, Key? key})
-      : _learningCurveUseCases = LearningCurveUseCases(repository: repository),
+      : _learningCurveUseCases = LearningCurveUseCases(
+          repository: repository,
+          datasource: PythonServerDatasource(),
+        ),
         super(key: key);
 
   @override

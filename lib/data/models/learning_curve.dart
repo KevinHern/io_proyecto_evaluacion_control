@@ -101,7 +101,7 @@ class LearningCurveData extends Equatable {
       return OperationResult(
         success: false,
         message:
-            "Un error ocurrió durante la deserialización del JSON. El JSON Object llegó de la siguiente forma:\n${map.toString()}",
+            "Un error ocurrió durante la deserialización del JSON. Un JSON Object llegó de la siguiente forma:\n${map.toString()}",
       );
     }
   }
