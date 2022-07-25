@@ -1,12 +1,12 @@
 # Proyecto de Evaluacion y Control de Proyectos
 
-Este es el repositorio donde se encuentra el front end.
+Este es el repositorio donde se encuentra el frontend.
 
 # Formato en envío
 
 ## Learning Curve
 
-La aplicación envía POST Request al URL del servidor proporcionado y adjunta un JSON en el body cuyo formato varía dependiendo del si el formulario que se llena es 'Condiciones Iniciales', 'N-Iteración' o '2 Muestras'.
+La aplicación envía POST Request al URL del servidor proporcionado y adjunta un JSON en el body cuyo formato varía dependiendo del formulario que se llena. Existen 3 posibilidades: 'Condiciones Iniciales', 'N-Iteración' o '2 Muestras'.
 Los formatos de cada uno son los siguientes:
 
 ### Condiciones Iniciales
@@ -99,4 +99,4 @@ El JSON de respuesta debe de contener un arreglo identificado por **series** y e
 Cada objeto debe de contener:
 - **xSequence (int)**: Representa la x-eava iteración.
 - **y1Time (double)**: Representa la cantidad de tiempo invertida en realizar la **x-eava** iteración
-- **y2AccumulatedTime (double)**: Representa la cantidad de tiempo accumulada realizar la primera iteración hasta la **x-eava** iteración
+- **y2AccumulatedTime (double)**: Representa la cantidad de tiempo acumulado desde la primera iteración hasta la **x-eava** iteración
