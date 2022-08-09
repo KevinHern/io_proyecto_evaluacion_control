@@ -97,7 +97,21 @@ class MonteCarloSimulationScreen extends StatelessWidget {
                         ),
                       ),
                       TextSpan(
-                        text: "${monteCarloUI.simulation!.skewerness}",
+                        text: "${monteCarloUI.simulation!.skewerness}\n",
+                        style: Theme.of(context).textTheme.bodyText2,
+                      ),
+                      TextSpan(
+                        text: "Muestras: ",
+                        style: TextStyle(
+                          fontFamily:
+                              Theme.of(context).textTheme.bodyText2!.fontFamily,
+                          fontSize:
+                              Theme.of(context).textTheme.bodyText2!.fontSize,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      TextSpan(
+                        text: "${monteCarloUI.simulation!.samples}",
                         style: Theme.of(context).textTheme.bodyText2,
                       ),
                     ],
