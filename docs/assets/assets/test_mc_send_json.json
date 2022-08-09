@@ -1,0 +1,19 @@
+{
+    "activities": [
+        {
+            "name": "A",
+            "minimum": 0,
+            "maximum": 10
+        },
+        {
+            "name": "B",
+            "minimum": 100,
+            "maximum": 1000
+        },
+        {
+            "name": "C",
+            "minimum": 10000,
+            "maximum": 100000
+        }
+    ]
+}
