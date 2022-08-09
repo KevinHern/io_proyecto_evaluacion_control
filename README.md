@@ -1,12 +1,12 @@
 # Proyecto de Evaluacion y Control de Proyectos
 
-Este es el repositorio donde se encuentra el front end.
+Este es el repositorio donde se encuentra el frontend.
 
 # Formato en envío
 
 ## Learning Curve
 
-La aplicación envía POST Request al URL del servidor proporcionado y adjunta un JSON en el body cuyo formato varía dependiendo del si el formulario que se llena es 'Condiciones Iniciales', 'N-Iteración' o '2 Muestras'.
+La aplicación envía POST Request al URL del servidor proporcionado y adjunta un JSON en el body cuyo formato varía dependiendo del formulario que se llena. Existen 3 posibilidades: 'Condiciones Iniciales', 'N-Iteración' o '2 Muestras'.
 Los formatos de cada uno son los siguientes:
 
 ### Condiciones Iniciales
@@ -20,7 +20,7 @@ Aquí es cuando se conoce el learning rate y el tiempo invertido en realizar la 
 ```yaml
 {
    "type": 0,             # int
-   "learningRate": .85,   # double
+   "learningRate": 0.85,   # double
    "time": 500.25,        # double
    "maxSequence": 50,     # int
 }
@@ -64,7 +64,7 @@ Aquí es cuando se conoce (o se tiene idea) del número de iteración y el tiemp
 
 # Formato de Recepción
 
-La aplicación un JSON como respuesta y el formato esperado es de la siguiente manera:
+La aplicación recibe un JSON como respuesta y el formato esperado es de la siguiente manera:
 
 ```yaml
 {
@@ -99,4 +99,4 @@ El JSON de respuesta debe de contener un arreglo identificado por **series** y e
 Cada objeto debe de contener:
 - **xSequence (int)**: Representa la x-eava iteración.
 - **y1Time (double)**: Representa la cantidad de tiempo invertida en realizar la **x-eava** iteración
-- **y2AccumulatedTime (double)**: Representa la cantidad de tiempo accumulada realizar la primera iteración hasta la **x-eava** iteración
+- **y2AccumulatedTime (double)**: Representa la cantidad de tiempo acumulado desde la primera iteración hasta la **x-eava** iteración
