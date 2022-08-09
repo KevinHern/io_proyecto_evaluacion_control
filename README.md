@@ -142,14 +142,14 @@ El formato es el siguiente:
 ```yaml
 {
   "summary": {
-        "mean": 350,
-        "stdev": 20,
-        "skew": -0.14062060471664342,
-        "kurtosis": 0.0481009845482836,
-        "median": 347.9012982760893,
-        "samples": 400
+        "mean": 350,                        # Double
+        "stdev": 20,                        # Double
+        "skew": -0.14062060471664342,       # Double
+        "kurtosis": 0.0481009845482836,     # Double
+        "median": 347.9012982760893,        # Double
+        "samples": 400                      # Int
    },
-   "values": [
+   "values": [                              # Double
       334.58240716118155,
       343.06754292527967,
       331.49749812726213,
@@ -169,11 +169,11 @@ El formato es el siguiente:
 El JSON de respuesta debe de contener un objeto identificado por **summary** y un arreglo identificado por **values**.
 
 El primero contiene la información estadística de la simulación Monte Carlo y debe de contener las siguientes propiedades:
-- **mean**           # Double
-- **stdev**          # Double
-- **skew**           # Double
-- **kurtosis**       # Double
-- **median**         # Double
-- **samples**        # Int
+- **mean**
+- **stdev**
+- **skew**
+- **kurtosis**
+- **median**
+- **samples**
 
 Y el arreglo debe de contener los valores totales de cada muestra (es decir, la sumatoria final de todas las actividades de cada muestra). Estos deben ser doubles y la cantidad esperada debe ser igual a la cantidad establecida en la propiedad **samples**
