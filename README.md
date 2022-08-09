@@ -62,7 +62,41 @@ Aquí es cuando se conoce (o se tiene idea) del número de iteración y el tiemp
 }
 ```
 
+## Monte Carlo
+
+Lo único que se manda es un JSON que contiene un arreglo de actividades. Cada actividad tiene descrito su nombre, el monto mínimo y monto máximo. El formato es de la siguiente forma:
+
+```yaml
+{
+    "activities": [
+        {
+            "name": "A",            # String
+            "minimum": 0,           # Double
+            "maximum": 10           # Double
+        },
+        {
+            "name": "B",            # String
+            "minimum": 100,         # Double
+            "maximum": 1000         # Double
+        },
+        {
+            "name": "C",            # String
+            "minimum": 10000,       # Double
+            "maximum": 100000       # Double
+        },
+        ...
+        {
+            "name": "N",            # String
+            "minimum": 78963,       # Double
+            "maximum": 110000       # Double
+        }
+    ]
+}
+```
+
 # Formato de Recepción
+
+## Learning Curve
 
 La aplicación recibe un JSON como respuesta y el formato esperado es de la siguiente manera:
 
@@ -100,3 +134,46 @@ Cada objeto debe de contener:
 - **xSequence (int)**: Representa la x-eava iteración.
 - **y1Time (double)**: Representa la cantidad de tiempo invertida en realizar la **x-eava** iteración
 - **y2AccumulatedTime (double)**: Representa la cantidad de tiempo acumulado desde la primera iteración hasta la **x-eava** iteración
+
+## Monte Carlo
+
+El formato es el siguiente:
+
+```yaml
+{
+  "summary": {
+        "mean": 350,
+        "stdev": 20,
+        "skew": -0.14062060471664342,
+        "kurtosis": 0.0481009845482836,
+        "median": 347.9012982760893,
+        "samples": 400
+   },
+   "values": [
+      334.58240716118155,
+      343.06754292527967,
+      331.49749812726213,
+      358.29187177968964,
+      358.17249458805844,
+      334.1626236047862,
+      351.5342927001772,
+      368.7845703535604,
+      361.03727281464273,
+      .
+      .
+      .
+   ]
+}
+```
+
+El JSON de respuesta debe de contener un objeto identificado por **summary** y un arreglo identificado por **values**.
+
+El primero contiene la información estadística de la simulación Monte Carlo y debe de contener las siguientes propiedades:
+- **mean**           # Double
+- **stdev**          # Double
+- **skew**           # Double
+- **kurtosis**       # Double
+- **median**         # Double
+- **samples**        # Int
+
+Y el arreglo debe de contener los valores totales de cada muestra (es decir, la sumatoria final de todas las actividades de cada muestra). Estos deben ser doubles y la cantidad esperada debe ser igual a la cantidad establecida en la propiedad **samples**
