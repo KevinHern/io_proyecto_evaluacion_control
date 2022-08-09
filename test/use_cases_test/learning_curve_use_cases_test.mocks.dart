@@ -38,11 +38,11 @@ class MockPythonServerDatasource extends _i1.Mock
   }
 
   @override
-  _i5.Future<_i2.OperationResult> getLearningCurveValues(
-          {String? url, String? encodedLearningCurve}) =>
+  _i5.Future<_i2.OperationResult> sendJsonToServer(
+          {String? url, String? encodedObject}) =>
       (super.noSuchMethod(
-              Invocation.method(#getLearningCurveValues, [],
-                  {#url: url, #encodedLearningCurve: encodedLearningCurve}),
+              Invocation.method(#sendJsonToServer, [],
+                  {#url: url, #encodedObject: encodedObject}),
               returnValue:
                   Future<_i2.OperationResult>.value(_FakeOperationResult_0()))
           as _i5.Future<_i2.OperationResult>);

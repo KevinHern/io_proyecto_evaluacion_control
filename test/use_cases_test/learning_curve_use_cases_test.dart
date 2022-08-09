@@ -73,9 +73,9 @@ void main() {
           final MockPythonServerDatasource mockDatasource =
               MockPythonServerDatasource();
           when(
-            mockDatasource.getLearningCurveValues(
+            mockDatasource.sendJsonToServer(
               url: anyNamed("url"),
-              encodedLearningCurve: anyNamed("encodedLearningCurve"),
+              encodedObject: anyNamed("encodedObject"),
             ),
           ).thenAnswer((_) async =>
               OperationResult(success: true, returnedObject: encodedJson));
@@ -111,9 +111,9 @@ void main() {
           final MockPythonServerDatasource mockDatasource =
               MockPythonServerDatasource();
           when(
-            mockDatasource.getLearningCurveValues(
+            mockDatasource.sendJsonToServer(
               url: anyNamed("url"),
-              encodedLearningCurve: anyNamed("encodedLearningCurve"),
+              encodedObject: anyNamed("encodedObject"),
             ),
           ).thenAnswer((_) async =>
               OperationResult(success: true, returnedObject: encodedJson));
@@ -148,9 +148,9 @@ void main() {
           final MockPythonServerDatasource mockDatasource =
               MockPythonServerDatasource();
           when(
-            mockDatasource.getLearningCurveValues(
+            mockDatasource.sendJsonToServer(
               url: anyNamed("url"),
-              encodedLearningCurve: anyNamed("encodedLearningCurve"),
+              encodedObject: anyNamed("encodedObject"),
             ),
           ).thenAnswer((_) async => OperationResult(
               success: false,
