@@ -70,9 +70,9 @@ class LearningCurveUseCases {
 
     if (!example) {
       // Sending Request
-      backendResult = await _datasource.getLearningCurveValues(
+      backendResult = await _datasource.sendJsonToServer(
         url: url,
-        encodedLearningCurve: _learningCurveManagementContract.toJson(
+        encodedObject: _learningCurveManagementContract.toJson(
             learningCurve: learningCurve),
       );
     } else {

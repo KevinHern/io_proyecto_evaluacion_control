@@ -2,15 +2,15 @@ import 'package:flutter_web_app/data/models/operation_result.dart';
 import 'package:http/http.dart' as http;
 
 class PythonServerDatasource {
-  Future<OperationResult> getLearningCurveValues(
-      {required String url, required String encodedLearningCurve}) async {
+  Future<OperationResult> sendJsonToServer(
+      {required String url, required String encodedObject}) async {
     try {
       final response = await http.post(
         Uri.parse(url),
         headers: <String, String>{
           'Content-Type': 'application/json',
         },
-        body: encodedLearningCurve,
+        body: encodedObject,
       );
 
       if (response.statusCode == 200) {

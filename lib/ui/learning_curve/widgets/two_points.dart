@@ -127,7 +127,7 @@ class LCTwoSamplesState extends State<LCTwoSamples> with FormMixin {
                     icon: const Icon(Icons.info),
                     label: const Text("Ejemplo"),
                     onPressed: () {
-                      execute(
+                      execute<List<LearningCurveData>>(
                         context: context,
                         useCasesFunction: Future<OperationResult>(
                           () => widget._learningCurveUseCases.getLearningCurve(
@@ -139,10 +139,10 @@ class LCTwoSamplesState extends State<LCTwoSamples> with FormMixin {
                             example: true,
                           ),
                         ),
-                        updateUI: (List<LearningCurveData> value) =>
-                            Provider.of<LearningCurveSeriesUI>(context,
-                                    listen: false)
-                                .series = value,
+                        updateUI: (value) => Provider.of<LearningCurveSeriesUI>(
+                                context,
+                                listen: false)
+                            .series = value,
                       );
                     },
                   ),
@@ -176,7 +176,7 @@ class LCTwoSamplesState extends State<LCTwoSamples> with FormMixin {
                             bSequenceTime =
                                 double.parse(bIterationTimeController.text);
 
-                        execute(
+                        execute<List<LearningCurveData>>(
                           context: context,
                           useCasesFunction: Future<OperationResult>(
                             () =>
@@ -190,7 +190,7 @@ class LCTwoSamplesState extends State<LCTwoSamples> with FormMixin {
                               bSequenceTime: bSequenceTime,
                             ),
                           ),
-                          updateUI: (List<LearningCurveData> value) =>
+                          updateUI: (value) =>
                               Provider.of<LearningCurveSeriesUI>(context,
                                       listen: false)
                                   .series = value,
