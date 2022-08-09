@@ -7,6 +7,7 @@ import 'package:flutter_web_app/ui/learning_curve/widgets/initial_conditions.dar
 import 'package:flutter_web_app/ui/learning_curve/widgets/n_iteration.dart';
 import 'package:flutter_web_app/ui/learning_curve/widgets/two_points.dart';
 import 'package:flutter_web_app/ui/models/screen_managerUI.dart';
+import 'package:flutter_web_app/ui/monte_carlo/monte_carlo_screen.dart';
 import 'package:provider/provider.dart';
 
 // Models
@@ -46,7 +47,7 @@ class SwitchScreen extends StatelessWidget {
               throw ("Unimplemented Learning Curve SubScreen");
           }
         } else if (screenManagerUI.screenType == ScreenType.MONTE_CARLO) {
-          return const SizedBox();
+          return MonteCarloScreen();
         } else if (screenManagerUI.screenType == ScreenType.INFORMATION) {
           return const InformationScreen();
         } else {
