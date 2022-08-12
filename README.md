@@ -22,7 +22,7 @@ Aquí es cuando se conoce el learning rate y el tiempo invertido en realizar la 
    "type": 0,             # int
    "learningRate": 0.85,   # double
    "time": 500.25,        # double
-   "maxSequence": 50,     # int
+   "maxSequence": 50     # int
 }
 ```
 
@@ -40,7 +40,7 @@ Aquí es cuando se conoce qué iteración es la que uno se encuentra y también 
    "sequenceNumber": 6,           # int
    "sequenceTime": 117.96,        # double
    "firstSequenceTime": 117.96,   # double
-   "maxSequence": 50,             # int
+   "maxSequence": 50             # int
 }
 ```
 
@@ -58,7 +58,7 @@ Aquí es cuando se conoce (o se tiene idea) del número de iteración y el tiemp
    "aSequenceTime": 80.25,    # double
    "bSequenceNumber": 13,     # int
    "bSequenceTime": 62.75,    # double
-   "maxSequence": 50,         # int
+   "maxSequence": 50         # int
 }
 ```
 
