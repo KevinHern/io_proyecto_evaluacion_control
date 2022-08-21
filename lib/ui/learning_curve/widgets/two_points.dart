@@ -37,8 +37,7 @@ class LCTwoSamples extends StatefulWidget {
 class LCTwoSamplesState extends State<LCTwoSamples> with FormMixin {
   static const double spacing = 8.0;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final TextEditingController serverController = TextEditingController(),
-      aIterationController = TextEditingController(),
+  final TextEditingController aIterationController = TextEditingController(),
       aIterationTimeController = TextEditingController(),
       bIterationController = TextEditingController(),
       bIterationTimeController = TextEditingController(),
@@ -55,21 +54,6 @@ class LCTwoSamplesState extends State<LCTwoSamples> with FormMixin {
             children: [
               const FormTitle(
                 title: "Dos Muestras",
-              ),
-              const SizedBox(
-                height: spacing,
-              ),
-              SingleLineInputField(
-                icon: Icons.link,
-                label: "Server URL",
-                controller: serverController,
-                validator: (String? value) {
-                  return (value == null)
-                      ? null
-                      : (value.trim().isEmpty)
-                          ? FormMessages.MANDATORY_FIELD
-                          : null;
-                },
               ),
               const SizedBox(
                 height: spacing,
@@ -131,7 +115,6 @@ class LCTwoSamplesState extends State<LCTwoSamples> with FormMixin {
                         context: context,
                         useCasesFunction: Future<OperationResult>(
                           () => widget._learningCurveUseCases.getLearningCurve(
-                            url: 'some url',
                             type: SubScreenType.LC_INITIAL_CONDITIONS,
                             maxSequenceNumber: 50,
                             learningRate: 0,
@@ -150,7 +133,6 @@ class LCTwoSamplesState extends State<LCTwoSamples> with FormMixin {
                     icon: const Icon(Icons.refresh),
                     label: const Text("Reset"),
                     onPressed: () {
-                      serverController.text = "";
                       aIterationController.text = "";
                       aIterationTimeController.text = "";
                       bIterationController.text = "";
@@ -164,7 +146,6 @@ class LCTwoSamplesState extends State<LCTwoSamples> with FormMixin {
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
                         // Preparing Data
-                        String url = serverController.text;
                         int maxSequenceNumber =
                             int.parse(maxSequencesController.text);
                         int aSequenceNumber =
@@ -181,7 +162,6 @@ class LCTwoSamplesState extends State<LCTwoSamples> with FormMixin {
                           useCasesFunction: Future<OperationResult>(
                             () =>
                                 widget._learningCurveUseCases.getLearningCurve(
-                              url: url,
                               type: SubScreenType.LC_TWO_SAMPLES,
                               maxSequenceNumber: maxSequenceNumber,
                               aSequenceNumber: aSequenceNumber,

@@ -16,7 +16,6 @@ import '../../../domain/use_cases/monte_carlo_use_cases.dart';
 
 class ActivitiesList extends StatelessWidget with FormMixin {
   final MonteCarloUseCases _useCases;
-  final TextEditingController urlController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   static const double spacing = 8.0;
   ActivitiesList({required MonteCarloUseCases useCases, Key? key})
@@ -70,83 +69,54 @@ class ActivitiesList extends StatelessWidget with FormMixin {
                   const SizedBox(
                     height: spacing * 1.5,
                   ),
-                  Form(
-                    key: _formKey,
-                    child: Column(
-                      children: [
-                        SingleLineInputField(
-                          icon: Icons.link,
-                          label: "URL Servidor",
-                          controller: urlController,
-                          validator: (String? value) {
-                            return (value == null)
-                                ? null
-                                : (value.trim().isEmpty)
-                                    ? FormMessages.MANDATORY_FIELD
-                                    : null;
-                          },
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      ElevatedButton.icon(
+                        icon: const Icon(Icons.info),
+                        label: const Text(
+                          "Ejemplo",
                         ),
-                        const SizedBox(
-                          height: spacing * 2.5,
+                        onPressed: () {
+                          execute<MonteCarloSimulation>(
+                            context: context,
+                            useCasesFunction: Future<OperationResult>(
+                              () => _useCases.doSimulation(
+                                activities: monteCarloUI.activities,
+                                example: true,
+                              ),
+                            ),
+                            updateUI: (value) =>
+                                monteCarloUI.simulation = value,
+                          );
+                        },
+                      ),
+                      ElevatedButton.icon(
+                        icon: const Icon(Icons.refresh),
+                        label: const Text(
+                          "Borrar Todo",
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            ElevatedButton.icon(
-                              icon: const Icon(Icons.info),
-                              label: const Text(
-                                "Ejemplo",
-                              ),
-                              onPressed: () {
-                                execute<MonteCarloSimulation>(
-                                  context: context,
-                                  useCasesFunction: Future<OperationResult>(
-                                    () => _useCases.doSimulation(
-                                      url: urlController.text,
-                                      activities: monteCarloUI.activities,
-                                      example: true,
-                                    ),
-                                  ),
-                                  updateUI: (value) =>
-                                      monteCarloUI.simulation = value,
-                                );
-                              },
-                            ),
-                            ElevatedButton.icon(
-                              icon: const Icon(Icons.refresh),
-                              label: const Text(
-                                "Borrar Todo",
-                              ),
-                              onPressed: () {
-                                monteCarloUI.activities.clear();
-                                monteCarloUI.update();
-                              },
-                            ),
-                            ElevatedButton.icon(
-                              icon: const Icon(Icons.send),
-                              label: const Text(
-                                "Enviar al Servidor",
-                              ),
-                              onPressed: () {
-                                if (_formKey.currentState!.validate()) {
-                                  execute<MonteCarloSimulation>(
-                                    context: context,
-                                    useCasesFunction: Future<OperationResult>(
-                                      () => _useCases.doSimulation(
-                                        url: urlController.text,
-                                        activities: monteCarloUI.activities,
-                                      ),
-                                    ),
-                                    updateUI: (value) =>
-                                        monteCarloUI.simulation = value,
-                                  );
-                                }
-                              },
-                            ),
-                          ],
+                        onPressed: () {
+                          monteCarloUI.activities.clear();
+                          monteCarloUI.update();
+                        },
+                      ),
+                      ElevatedButton.icon(
+                        icon: const Icon(Icons.send),
+                        label: const Text(
+                          "Enviar al Servidor",
                         ),
-                      ],
-                    ),
+                        onPressed: () => execute<MonteCarloSimulation>(
+                          context: context,
+                          useCasesFunction: Future<OperationResult>(
+                            () => _useCases.doSimulation(
+                              activities: monteCarloUI.activities,
+                            ),
+                          ),
+                          updateUI: (value) => monteCarloUI.simulation = value,
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               );

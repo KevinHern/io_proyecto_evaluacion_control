@@ -73,34 +73,6 @@ class MonteCarloSimulationScreen extends StatelessWidget {
                         style: Theme.of(context).textTheme.bodyText2,
                       ),
                       TextSpan(
-                        text: "Kurtosis: ",
-                        style: TextStyle(
-                          fontFamily:
-                              Theme.of(context).textTheme.bodyText2!.fontFamily,
-                          fontSize:
-                              Theme.of(context).textTheme.bodyText2!.fontSize,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      TextSpan(
-                        text: "${monteCarloUI.simulation!.kurtosis}\n",
-                        style: Theme.of(context).textTheme.bodyText2,
-                      ),
-                      TextSpan(
-                        text: "Sesgo: ",
-                        style: TextStyle(
-                          fontFamily:
-                              Theme.of(context).textTheme.bodyText2!.fontFamily,
-                          fontSize:
-                              Theme.of(context).textTheme.bodyText2!.fontSize,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      TextSpan(
-                        text: "${monteCarloUI.simulation!.skewerness}\n",
-                        style: Theme.of(context).textTheme.bodyText2,
-                      ),
-                      TextSpan(
                         text: "Muestras: ",
                         style: TextStyle(
                           fontFamily:

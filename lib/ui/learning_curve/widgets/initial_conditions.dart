@@ -40,8 +40,7 @@ class LCInitialConditionsState extends State<LCInitialConditions>
   static const double spacing = 8.0;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  final TextEditingController serverController = TextEditingController(),
-      learningRateController = TextEditingController(),
+  final TextEditingController learningRateController = TextEditingController(),
       firstTimeController = TextEditingController(),
       maxSequencesController = TextEditingController(text: "50");
 
@@ -56,21 +55,6 @@ class LCInitialConditionsState extends State<LCInitialConditions>
             children: [
               const FormTitle(
                 title: "Condiciones Iniciales",
-              ),
-              const SizedBox(
-                height: spacing,
-              ),
-              SingleLineInputField(
-                icon: Icons.link,
-                label: "Server URL",
-                controller: serverController,
-                validator: (String? value) {
-                  return (value == null)
-                      ? null
-                      : (value.trim().isEmpty)
-                          ? FormMessages.MANDATORY_FIELD
-                          : null;
-                },
               ),
               const SizedBox(
                 height: spacing,
@@ -114,7 +98,6 @@ class LCInitialConditionsState extends State<LCInitialConditions>
                         context: context,
                         useCasesFunction: Future<OperationResult>(
                           () => widget._learningCurveUseCases.getLearningCurve(
-                            url: 'some url',
                             type: SubScreenType.LC_INITIAL_CONDITIONS,
                             maxSequenceNumber: 50,
                             learningRate: 0,
@@ -133,7 +116,6 @@ class LCInitialConditionsState extends State<LCInitialConditions>
                     icon: const Icon(Icons.refresh),
                     label: const Text("Reset"),
                     onPressed: () {
-                      serverController.text = "";
                       learningRateController.text = "";
                       firstTimeController.text = "";
                       maxSequencesController.text = "50";
@@ -145,7 +127,6 @@ class LCInitialConditionsState extends State<LCInitialConditions>
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
                         // Preparing Data
-                        String url = serverController.text;
                         int maxSequenceNumber =
                             int.parse(maxSequencesController.text);
                         double learningRate =
@@ -158,7 +139,6 @@ class LCInitialConditionsState extends State<LCInitialConditions>
                           useCasesFunction: Future<OperationResult>(
                             () =>
                                 widget._learningCurveUseCases.getLearningCurve(
-                              url: url,
                               type: SubScreenType.LC_INITIAL_CONDITIONS,
                               maxSequenceNumber: maxSequenceNumber,
                               learningRate: learningRate,

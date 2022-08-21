@@ -2,11 +2,13 @@ import 'package:flutter_web_app/data/models/operation_result.dart';
 import 'package:http/http.dart' as http;
 
 class PythonServerDatasource {
+  static const String serverURL =
+      "https://limitless-shelf-76580.herokuapp.com/ejemplo";
   Future<OperationResult> sendJsonToServer(
-      {required String url, required String encodedObject}) async {
+      {required String encodedObject}) async {
     try {
       final response = await http.post(
-        Uri.parse(url),
+        Uri.parse(serverURL),
         headers: <String, String>{
           'Content-Type': 'application/json',
         },

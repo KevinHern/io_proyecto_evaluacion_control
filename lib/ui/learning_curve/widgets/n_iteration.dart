@@ -37,8 +37,7 @@ class LCNIteration extends StatefulWidget {
 class LCNIterationState extends State<LCNIteration> with FormMixin {
   static const double spacing = 8.0;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final TextEditingController serverController = TextEditingController(),
-      nIterationController = TextEditingController(),
+  final TextEditingController nIterationController = TextEditingController(),
       nIterationTimeController = TextEditingController(),
       firstTimeController = TextEditingController(),
       maxSequencesController = TextEditingController(text: "50");
@@ -54,21 +53,6 @@ class LCNIterationState extends State<LCNIteration> with FormMixin {
             children: [
               const FormTitle(
                 title: "N Secuencia",
-              ),
-              const SizedBox(
-                height: spacing,
-              ),
-              SingleLineInputField(
-                icon: Icons.link,
-                label: "Server URL",
-                controller: serverController,
-                validator: (String? value) {
-                  return (value == null)
-                      ? null
-                      : (value.trim().isEmpty)
-                          ? FormMessages.MANDATORY_FIELD
-                          : null;
-                },
               ),
               const SizedBox(
                 height: spacing,
@@ -121,7 +105,6 @@ class LCNIterationState extends State<LCNIteration> with FormMixin {
                         context: context,
                         useCasesFunction: Future<OperationResult>(
                           () => widget._learningCurveUseCases.getLearningCurve(
-                            url: 'some url',
                             type: SubScreenType.LC_INITIAL_CONDITIONS,
                             maxSequenceNumber: 50,
                             learningRate: 0,
@@ -140,7 +123,6 @@ class LCNIterationState extends State<LCNIteration> with FormMixin {
                     icon: const Icon(Icons.refresh),
                     label: const Text("Reset"),
                     onPressed: () {
-                      serverController.text = "";
                       nIterationController.text = "";
                       nIterationTimeController.text = "";
                       firstTimeController.text = "";
@@ -153,7 +135,6 @@ class LCNIterationState extends State<LCNIteration> with FormMixin {
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
                         // Preparing Data
-                        String url = serverController.text;
                         int maxSequenceNumber =
                             int.parse(maxSequencesController.text);
                         int sequenceNumber =
@@ -168,7 +149,6 @@ class LCNIterationState extends State<LCNIteration> with FormMixin {
                           useCasesFunction: Future<OperationResult>(
                             () =>
                                 widget._learningCurveUseCases.getLearningCurve(
-                              url: url,
                               type: SubScreenType.LC_N_ITERATION,
                               maxSequenceNumber: maxSequenceNumber,
                               sequenceNumber: sequenceNumber,

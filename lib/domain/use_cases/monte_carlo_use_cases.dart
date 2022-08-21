@@ -39,8 +39,7 @@ class MonteCarloUseCases {
   }
 
   Future<OperationResult> doSimulation(
-      {required String url,
-      required List<MonteCarloActivity> activities,
+      {required List<MonteCarloActivity> activities,
       bool example = false}) async {
     late final OperationResult backendResult;
 
@@ -48,7 +47,6 @@ class MonteCarloUseCases {
     if (!example) {
       // Sending request
       backendResult = await _datasource.sendJsonToServer(
-        url: url,
         encodedObject: _repository.toJson(activities: activities),
       );
     } else {

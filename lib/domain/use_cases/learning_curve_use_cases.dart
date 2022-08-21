@@ -20,7 +20,6 @@ class LearningCurveUseCases {
         _datasource = datasource;
 
   Future<OperationResult> getLearningCurve({
-    required String url,
     required SubScreenType type,
     required int maxSequenceNumber,
     double? learningRate,
@@ -71,7 +70,6 @@ class LearningCurveUseCases {
     if (!example) {
       // Sending Request
       backendResult = await _datasource.sendJsonToServer(
-        url: url,
         encodedObject: _learningCurveManagementContract.toJson(
             learningCurve: learningCurve),
       );
